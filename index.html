@@ -9,27 +9,48 @@
 </head>
 <body>
     <script>
+        // 使用FileReader
+        // function  handleFiles(files)
+        // {
+        //   debugger
+        //   if(files.length)
+        //   {
+        //     var file = files[0];
+        //     var reader = new FileReader();
+        //     reader.onload = function()
+        //     {
+        //         document.querySelector("#sourceImage").src = this.result;
+        //         if(g) {
+        //           g.setImage(this.result)
+        //           var generatorImage = document.querySelector('#generatorImage')
+        //           g.getBannerImage().then(res => {
+        //             generatorImage.src = res
+        //           })
+        //         }
+        //     };
+        //     reader.readAsDataURL(file);
+        //   }
+        // }
+
+        // 使用URL.createObjectURL
         function  handleFiles(files)
         {
-          debugger
           if(files.length)
           {
             var file = files[0];
-            var reader = new FileReader();
-            reader.onload = function()
-            {
-                document.querySelector("#sourceImage").src = this.result;
-                if(g) {
-                  g.setImage(this.result)
-                  var generatorImage = document.querySelector('#generatorImage')
-                  g.getBannerImage().then(res => {
-                    generatorImage.src = res
-                  })
-                }
-            };
-            reader.readAsDataURL(file);
+            var url = URL.createObjectURL(file);
+            document.querySelector("#sourceImage").src = url
+            if(g) {
+              g.setImage(url)
+              var generatorImage = document.querySelector('#generatorImage')
+              g.getBannerImage().then(res => {
+                generatorImage.src = res
+              })
+            }
           }
         }
+
+
       </script>
   <div id="stage">
       请选择图片：<input type="file" name="选择图片" id="input" onchange="handleFiles(this.files)"/><br/>
@@ -47,6 +68,9 @@
       height: 1000px;
       width:100%;
       background-color: #ddd;
+    }
+    canvas{
+      display: none;
     }
   </style>
   <script>
