@@ -136,23 +136,24 @@ class ImageGenerator {
   _drawImage() {
     let width = this.canvas.width
     let height = this.canvas.height
+    let imgWidth = this.image.naturalWidth
 
     // 绘制Header
-    let rectangeHeaderSource = new Rectange(0, 0, width, this.topBannerHeight)
+    let rectangeHeaderSource = new Rectange(0, 0, imgWidth, this.topBannerHeight)
     let rectangeHeaderTarget = new Rectange(0, 0, width, this.topBannerHeight)
     this._draw(this.image, rectangeHeaderSource, rectangeHeaderTarget)
 
     // ctx.drawImage(this.image, 0, 0, width, this.topBannerHeight, 0, 0, width, height)
 
     // 绘制Body
-    let rectangeBodySource = new Rectange(0, this.topBannerHeight, width, this.image.naturalHeight - this.topBannerHeight - this.bottomBannerHeight)
+    let rectangeBodySource = new Rectange(0, this.topBannerHeight, imgWidth, this.image.naturalHeight - this.topBannerHeight - this.bottomBannerHeight)
     let rectangeBodyTarget = new Rectange(0, this.topBannerHeight, width, height - this.topBannerHeight - this.bottomBannerHeight)
     this._draw(this.image, rectangeBodySource, rectangeBodyTarget)
 
     // ctx.drawImage(this.image, 0, this.topBannerHeight, width, this.image.naturalHeight - this.topBannerHeight - this.bottomBannerHeight, 0, this.topBannerHeight, width, height - this.topBannerHeight - this.bottomBannerHeight)
     // 绘制Footer
 
-    let rectangeFooterSource = new Rectange(0, this.image.naturalHeight - this.bottomBannerHeight, width, this.bottomBannerHeight)
+    let rectangeFooterSource = new Rectange(0, this.image.naturalHeight - this.bottomBannerHeight, imgWidth, this.bottomBannerHeight)
     let rectangeFooterTarget = new Rectange(0, height - this.bottomBannerHeight, width, this.bottomBannerHeight)
     this._draw(this.image, rectangeFooterSource, rectangeFooterTarget)
 
