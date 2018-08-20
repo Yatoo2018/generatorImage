@@ -48,3 +48,12 @@ imageGenerator.updateCanvasSize({width, height})
 
 
 详细用法可以参考[示例](./index.html)
+
+## 运行示例
+
+1. 直接打开index.html文件即可
+2. 修改脚本后，重新编译
+```shell
+npm i
+npm run dev // 脚本编译完成
+```
